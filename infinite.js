@@ -10,15 +10,19 @@ if(document.readyState === 'loading') {
     setUp();
 }
 
-function setUp() {
-    cardService.loadJson(response => cardService.json = JSON.parse(response)['api'] );
-    document.querySelector('#mtg', () => {
-        cardService.setAuth('TCGPlayer');
+async function setUp() {
+    await cardService.loadJson();
+    document.querySelector('#mtg').addEventListener('click', () => {
+        cardService.setAuth('TCGPlayer', response => {
+            cardService.authToken = JSON.parse(response)['access_token'];
+            cardService.getProducts();
+        });
     });
 
     document.querySelector('#hearthstone').addEventListener('click', () => {
         cardService.setAuth('Blizzard', response => {
-            cardService.authToken = JSON.parse(response);
+            cardService.authToken = JSON.parse(response)["access_token"];
+            cardService.getCards(16);
         });
     });
 }
