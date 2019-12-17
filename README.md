@@ -8,3 +8,6 @@ So.... due to CORS there are some issues with xmlHttpRequests and in order to by
 - run **_npm i -g http-server_** to install a simple server 
 - run **_http-server -c-1_** to start the server 
 - navigate to _http://localhost:8080/infinite.html_
+
+## Update 
+Migrating the code to the Trigger Ajax Repo
